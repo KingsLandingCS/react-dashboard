@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item {
+    color: #6b7280;
+    /* Tailwind's gray-400 */
+    text-decoration: none;
+}
+
+.breadcrumb-item:hover {
+    color: #4b5563;
+    /* Tailwind's gray-300 */
+}
+
+.breadcrumb-separator {
+    margin: 0 0.5rem;
+}
