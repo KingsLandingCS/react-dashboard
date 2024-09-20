@@ -67,7 +67,7 @@ function App() {
       <div className="app flex h-screen">
         <div
           ref={sidebarRef}
-          className={`sidebar-overlay fixed xl:relative xl:flex p-5 w-1/6 m-5 rounded-3xl bg-gradient-to-t from-gray-900 to-gray-700 z-2`}
+          className={`sidebar-overlay flex p-5 w-1/6 m-5 rounded-3xl bg-gradient-to-t from-gray-900 to-gray-700 z-2`}
           style={{ display: isSidebarVisible ? 'block' : 'none' }}
         >
           <Sidebar />
