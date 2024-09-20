@@ -19,12 +19,12 @@ function App() {
       <div className="app flex h-screen">
 
         {/* sidebar */}
-        <div className="sidebar-overlay p-5 w-1/6 m-5 rounded-3xl bg-gradient-to-t from-gray-900 to-gray-700">
+        <div className="sidebar-overlay p-5 w-1/6  m-5 rounded-3xl bg-gradient-to-t from-gray-900 to-gray-700 hidden xl:block">
           <Sidebar />
         </div>
 
         {/* main content area */}
-        <div className="main-content flex flex-col w-5/6 text-red-300">
+        <div className="main-content flex flex-col w-full xl:w-5/6 text-red-300">
 
           {/* Header component */}
           <Header />
