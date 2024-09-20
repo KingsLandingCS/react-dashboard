@@ -1,6 +1,5 @@
-// src/components/Header.jsx
 import { Link, useLocation } from 'react-router-dom';
-import { FiSettings, FiBell } from 'react-icons/fi'; // React icons for settings and bell
+import { FiSettings, FiBell } from 'react-icons/fi';
 
 const Header = () => {
     const location = useLocation();
@@ -9,7 +8,6 @@ const Header = () => {
     return (
         <header className="header bg-white text-zinc-500 p-4">
             <div className="flex items-center justify-between">
-                {/* Breadcrumbs Section */}
                 <div className="flex items-center space-x-4">
                     <nav aria-label="Breadcrumb">
                         <ol className="flex space-x-2">
@@ -38,31 +36,24 @@ const Header = () => {
                     </nav>
                 </div>
 
-                {/* Title Section */}
                 <h1 className="text-xl font-bold">Your Dashboard</h1>
 
-                {/* Action Items Section */}
                 <div className="flex items-center space-x-4">
-                    {/* Search Input */}
                     <input
                         type="text"
                         placeholder="Search..."
                         className="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-gray-400"
                     />
-
                     <button className="bg-red-50 text-red-500 px-4 py-1 rounded outline outline-1 outline-red-500 hover:bg-red-500 hover:text-white">
                         Search
                     </button>
-
-
-                    {/* Icons and Buttons */}
                     <Link to="/settings">
                         <FiSettings className="text-xl text-gray-500 hover:text-gray-600" />
                     </Link>
                     <Link to="/notifications">
                         <FiBell className="text-xl text-gray-500 hover:text-gray-600" />
                     </Link>
-                    <Link to="/signin" className=" text-zinc-500 px-4 py-1 rounded font-semibold">
+                    <Link to="/sign-in" className="text-zinc-500 px-4 py-1 rounded font-semibold">
                         Sign In
                     </Link>
                 </div>
