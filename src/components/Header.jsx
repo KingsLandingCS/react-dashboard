@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { FiSettings, FiBell } from 'react-icons/fi';
+import { FiSettings, FiBell, FiMenu } from 'react-icons/fi';
+import PropTypes from 'prop-types'; // Import PropTypes
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter(x => x);
 
@@ -44,8 +45,14 @@ const Header = () => {
                         placeholder="Search..."
                         className="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-gray-400"
                     />
+
                     <button className="bg-red-50 text-red-500 px-4 py-1 rounded outline outline-1 outline-red-500 hover:bg-red-500 hover:text-white">
                         Search
+                    </button>
+
+                    {/* Button for toggling sidebar */}
+                    <button onClick={toggleSidebar} className="p-2 rounded hover:bg-gray-200">
+                        <FiMenu className="text-xl text-gray-500" />
                     </button>
                     <Link to="/settings">
                         <FiSettings className="text-xl text-gray-500 hover:text-gray-600" />
@@ -60,6 +67,11 @@ const Header = () => {
             </div>
         </header>
     );
+};
+
+// PropTypes for validation
+Header.propTypes = {
+    toggleSidebar: PropTypes.func.isRequired, // Validate toggleSidebar as a required function
 };
 
 export default Header;
