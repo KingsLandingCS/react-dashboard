@@ -64,7 +64,7 @@ function App() {
         {/* sidebar */}
         <div
           ref={sidebarRef} // Attach the sidebar reference for GSAP to manipulate
-          className={`sidebar-overlay p-5 w-1/6 m-5 rounded-3xl bg-gradient-to-t from-gray-900 to-gray-700 ${isSidebarVisible ? 'block' : 'hidden'}`}
+          className={`sidebar-overlay p-5 w-1/6 m-5 rounded-3xl bg-gradient-to-t from-gray-900 to-gray-700 z-2 ${isSidebarVisible ? 'block' : 'hidden'}`}
           style={{ transform: 'translateX(-100%)' }} // Sidebar is initially hidden
         >
           <Sidebar />
