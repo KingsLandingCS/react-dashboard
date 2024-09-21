@@ -14,82 +14,79 @@ import SignUp from './pages/SignUp';
 import './App.scss';
 
 function App() {
-  const sidebarRef = useRef(null);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(window.innerWidth >= 1280);
+    const sidebarRef = useRef(null);
+    const [isSidebarVisible, setIsSidebarVisible] = useState(window.innerWidth >= 1280);
 
-  const handleSidebarAnimation = useCallback(() => {
-    const sidebar = sidebarRef.current;
+    const handleSidebarAnimation = useCallback(() => {
+        const sidebar = sidebarRef.current;
 
-    if (isSidebarVisible) {
-      gsap.to(sidebar, {
-        x: '0%',
-        duration: 0.5,
-        ease: 'power2.out',
-        display: 'block',
-      });
-    } else {
-      gsap.to(sidebar, {
-        x: '-100%',
-        duration: 0.5,
-        ease: 'power2.in',
-        onComplete: () => {
-          gsap.set(sidebar, { display: 'none' });
-        },
-      });
-    }
-  }, [isSidebarVisible]); // Added isSidebarVisible as dependency
+        if (isSidebarVisible) {
+            gsap.to(sidebar, {
+                x: '0%',
+                duration: 0.5,
+                ease: 'power2.out',
+            });
+        } else {
+            gsap.to(sidebar, {
+                x: '-100%',
+                duration: 0.5,
+                ease: 'power2.in',
+            });
+        }
+    }, [isSidebarVisible]);
 
-  const toggleSidebar = () => {
-    setIsSidebarVisible(prevState => !prevState);
-  };
-
-  useEffect(() => {
-    handleSidebarAnimation();
-  }, [handleSidebarAnimation]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1280) {
-        setIsSidebarVisible(true);
-      } else {
-        setIsSidebarVisible(false);
-      }
+    const toggleSidebar = () => {
+        setIsSidebarVisible(prevState => !prevState);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    useEffect(() => {
+        handleSidebarAnimation();
+    }, [handleSidebarAnimation]);
 
-  return (
-    <Router>
-      <div className="app flex h-screen">
-        <div
-          ref={sidebarRef}
-          className={`sidebar-overlay flex p-5 w-1/6 m-5 rounded-3xl bg-gradient-to-t from-gray-900 to-gray-700 z-2`}
-          style={{ display: isSidebarVisible ? 'block' : 'none' }}
-        >
-          <Sidebar />
-        </div>
-        <div className="main-content flex flex-col text-red-300 w-full z-1">
-          <Header toggleSidebar={toggleSidebar} />
-          <div className="flex-1 flex items-center justify-center p-6">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/tables" element={<Tables />} />
-              <Route path="/billing" element={<Billing />} />
-              <Route path="/virtual-reality" element={<VirtualReality />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/sign-in" element={<SignIn />} />
-              <Route path="/sign-up" element={<SignUp />} />
-            </Routes>
-          </div>
-        </div>
-      </div>
-    </Router>
-  );
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1280) {
+                setIsSidebarVisible(true);
+            } else {
+                setIsSidebarVisible(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return (
+        <Router>
+            <div className="app flex h-screen">
+                {/* Sidebar - Absolutely positioned with margin */}
+                <div
+                    ref={sidebarRef}
+                    className={`fixed top-5 left-5 bottom-5 p-6 w-64 bg-gradient-to-t from-gray-900 to-gray-700 z-10 transform ${isSidebarVisible ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-500 ease-in-out rounded-lg shadow-lg`}
+                >
+                    <Sidebar />
+                </div>
+                {/* Main content: 100% width on small screens, 80% width on xl screens */}
+                <div className="main-content flex-1 flex flex-col w-full xl:ml-72 xl:w-[80%]">
+                    <Header toggleSidebar={toggleSidebar} />
+                    <div className="flex-1 flex items-center justify-center p-6">
+                        <Routes>
+                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/tables" element={<Tables />} />
+                            <Route path="/billing" element={<Billing />} />
+                            <Route path="/virtual-reality" element={<VirtualReality />} />
+                            <Route path="/notifications" element={<Notifications />} />
+                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/sign-in" element={<SignIn />} />
+                            <Route path="/sign-up" element={<SignUp />} />
+                        </Routes>
+                    </div>
+                </div>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

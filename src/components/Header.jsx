@@ -54,15 +54,19 @@ const Header = ({ toggleSidebar }) => {
                     <button onClick={toggleSidebar} className="p-2 rounded hover:bg-gray-200">
                         <FiMenu className="text-xl text-gray-500" />
                     </button>
+
                     <Link to="/settings">
                         <FiSettings className="text-xl text-gray-500 hover:text-gray-600" />
                     </Link>
+
                     <Link to="/notifications">
                         <FiBell className="text-xl text-gray-500 hover:text-gray-600" />
                     </Link>
+
                     <Link to="/sign-in" className="text-zinc-500 px-4 py-1 rounded font-semibold">
                         Sign In
                     </Link>
+
                 </div>
             </div>
         </header>
