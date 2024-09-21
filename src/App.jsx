@@ -64,7 +64,7 @@ function App() {
                 {/* Sidebar - Absolutely positioned with margin */}
                 <div
                     ref={sidebarRef}
-                    className={`fixed top-5 left-5 bottom-5 p-6 w-64 bg-gradient-to-t from-gray-900 to-gray-700 z-10 transform ${isSidebarVisible ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-500 ease-in-out rounded-lg shadow-lg`}
+                    className={`fixed top-5 left-5 bottom-5 p-6 w-64 bg-gradient-to-t from-gray-900 to-gray-700 z-10 transform ${isSidebarVisible ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-500 ease-in-out rounded-xl shadow-lg`}
                 >
                     <Sidebar />
                 </div>
