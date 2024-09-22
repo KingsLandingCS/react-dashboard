@@ -40,7 +40,7 @@ const Header = () => {
             <div className="flex items-center justify-between lg:justify-end space-x-4">
                 <h1 className="text-xl font-bold">Your Dashboard</h1>
 
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 ">
                     <input
                         type="text"
                         placeholder="Search..."
