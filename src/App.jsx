@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { gsap } from 'gsap';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
@@ -14,63 +12,19 @@ import SignUp from './pages/SignUp';
 import './App.scss';
 
 function App() {
-    const sidebarRef = useRef(null);
-    const [isSidebarVisible, setIsSidebarVisible] = useState(window.innerWidth >= 1280);
-
-    const handleSidebarAnimation = useCallback(() => {
-        const sidebar = sidebarRef.current;
-
-        if (isSidebarVisible) {
-            gsap.to(sidebar, {
-                x: '0%',
-                duration: 0.5,
-                ease: 'power2.out',
-            });
-        } else {
-            gsap.to(sidebar, {
-                x: '-100%',
-                duration: 0.5,
-                ease: 'power2.in',
-            });
-        }
-    }, [isSidebarVisible]);
-
-    const toggleSidebar = () => {
-        setIsSidebarVisible(prevState => !prevState);
-    };
-
-    useEffect(() => {
-        handleSidebarAnimation();
-    }, [handleSidebarAnimation]);
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 1280) {
-                setIsSidebarVisible(true);
-            } else {
-                setIsSidebarVisible(false);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
     return (
         <Router>
             <div className="app flex h-screen">
-                {/* Sidebar - Absolutely positioned with margin */}
+                {/* Sidebar */}
                 <div
-                    ref={sidebarRef}
-                    className={`fixed top-5 left-5 bottom-5 p-6 w-64 bg-gradient-to-t from-gray-900 to-gray-700 z-10 transform ${isSidebarVisible ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-500 ease-in-out rounded-xl shadow-lg`}
+                    className={`m-5 p-6 w-1/6 md:w-1/4 lg:w-1/6 bg-gradient-to-t from-gray-900 to-gray-700 z-10 rounded-[20px] shadow-lg`}
                 >
                     <Sidebar />
                 </div>
-                {/* Main content: 100% width on small screens, 80% width on xl screens */}
-                <div className="main-content flex-1 flex flex-col w-full xl:ml-72 xl:w-[80%]">
-                    <Header toggleSidebar={toggleSidebar} />
+                {/* Main content: fixed width */}
+                <div className="main-content flex-1 flex flex-col transition-all duration-300 w-5/6 md:w-3/4 lg:w-5/6 ">
+                    <Header />
                     <div className="flex-1 flex items-center justify-center p-6">
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
