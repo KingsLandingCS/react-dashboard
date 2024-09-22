@@ -37,11 +37,11 @@ const Dashboard = () => {
         <div className="grid grid-rows-3 h-full">
 
             {/* First Row: 4 Columns */}
-            <div className="grid grid-cols-4 gap-x-5">
+            <div className="grid xl:grid-cols-4 lg:grid-cols-2 gap-5">
                 {/* Repeat the card component as needed */}
                 {[...Array(4)].map((_, index) => (
-                    <div className="bg-transparent h-" key={index}>
-                        <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+                    <div className="bg-transparent" key={index}>
+                        <div className="max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
                             {/* Replace SVG and content as needed */}
                             <svg className="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 {/* Your SVG path here */}
@@ -62,7 +62,7 @@ const Dashboard = () => {
             </div>
 
             {/* Second Row: 3 Columns */}
-            <div className="grid grid-cols-3 ">
+            <div className="grid xl:grid-cols-3 lg:grid-cols-2">
                 <div className="bg-transparent ">
                     <ApexCharts
                         options={{ xaxis: { categories: columnChartData.categories }, chart: { type: 'bar' } }}
@@ -87,9 +87,9 @@ const Dashboard = () => {
             </div>
 
             {/* Third Row: 2 Columns */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid xl:grid-cols-4 lg:grid-cols-3 gap-4">
 
-                <div className="bg-transparent col-span-3 p-4">
+                <div className="bg-transparent col-span-2 p-4">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
